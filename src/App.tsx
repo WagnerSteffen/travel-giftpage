@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import type { ReactNode } from "react";
 import {
   ChevronDown,
   Gift,
@@ -8,7 +9,6 @@ import {
   Sparkles,
   Heart,
 } from "lucide-react";
-
 const Confetti = () => {
   const [confetti] = useState(() =>
     Array.from({ length: 50 }, (_, i) => ({
@@ -40,7 +40,13 @@ const Confetti = () => {
   );
 };
 
-const FadeInOnScroll = ({ children, delay = 0 }) => {
+const FadeInOnScroll = ({
+  children,
+  delay = 0,
+}: {
+  children: ReactNode;
+  delay?: number;
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
 
